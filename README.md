@@ -1,2 +1,2 @@
 # opendxl-mar-client-python
-OpenDXL Client for McAfee Active Response (MAR)
+McAfee Active Response (MAR) client library for use with the OpenDXL Python Client
