@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+################################################################################
+# Copyright (c) 2016 McAfee Inc. - All Rights Reserved.
+################################################################################
+
+
 class SortConstants:
     """
     Constants that describe the direction the search results should be sorted (ascending vs. descending)
