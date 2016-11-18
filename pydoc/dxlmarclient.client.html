@@ -1,0 +1,501 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>dxlmarclient.client module &#8212; McAfee Active Response (MAR) DXL Client Library 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="McAfee Active Response (MAR) DXL Client Library 0.1.0 documentation" href="index.html" />
+    <link rel="up" title="dxlmarclient package" href="dxlmarclient.html" />
+    <link rel="next" title="dxlmarclient.constants module" href="dxlmarclient.constants.html" />
+    <link rel="prev" title="dxlmarclient package" href="dxlmarclient.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dxlmarclient.constants.html" title="dxlmarclient.constants module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="dxlmarclient.html" title="dxlmarclient package"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">McAfee Active Response (MAR) DXL Client Library 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="dxlmarclient.html" accesskey="U">dxlmarclient package</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-dxlmarclient.client">
+<span id="dxlmarclient-client-module"></span><h1>dxlmarclient.client module<a class="headerlink" href="#module-dxlmarclient.client" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="dxlmarclient.client.MarClient">
+<em class="property">class </em><code class="descclassname">dxlmarclient.client.</code><code class="descname">MarClient</code><span class="sig-paren">(</span><em>dxl_client</em><span class="sig-paren">)</span><a class="headerlink" href="#dxlmarclient.client.MarClient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>This client provides a high level wrapper for communicating with the McAfee Active Response (MAR) DXL service.</p>
+<p>The purpose of this client is to allow the user to perform MAR searches without having to focus on
+lower-level details such as MAR-specific DXL topics and message formats.</p>
+<p>Constructor parameters:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dxl_client</strong> &#8211; The DXL client to use for communication with the MAR DXL service</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="dxlmarclient.client.MarClient.poll_interval">
+<code class="descname">poll_interval</code><a class="headerlink" href="#dxlmarclient.client.MarClient.poll_interval" title="Permalink to this definition">¶</a></dt>
+<dd><p>The amount of time to wait (in seconds) before polling the MAR server for results</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dxlmarclient.client.MarClient.search">
+<code class="descname">search</code><span class="sig-paren">(</span><em>projections</em>, <em>conditions=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dxlmarclient.client.MarClient.search" title="Permalink to this definition">¶</a></dt>
+<dd><p>Executes a search via McAfee Active Response.</p>
+<p>Once the search has completed a <a class="reference internal" href="#dxlmarclient.client.ResultsContext" title="dxlmarclient.client.ResultsContext"><code class="xref py py-class docutils literal"><span class="pre">ResultsContext</span></code></a> object is returned which is used to access the
+search results.</p>
+<p>Execution of a MAR search requires a <code class="docutils literal"><span class="pre">list</span></code> of <cite>projections</cite> and an optional <code class="docutils literal"><span class="pre">dictionary</span></code> containing
+the search <cite>conditions</cite>.</p>
+<p><strong>Projections</strong></p>
+<blockquote>
+<div><p><cite>Projections</cite> are used to describe the information to collect in the search. Each <cite>projection</cite> consists
+of a <cite>collector</cite> name and a list of <cite>output names</cite> from the <cite>collector</cite>. For example, the
+<code class="docutils literal"><span class="pre">Processes</span></code> <cite>collector</cite> includes <cite>output names</cite> such as <code class="docutils literal"><span class="pre">name</span></code>, <code class="docutils literal"><span class="pre">sha1</span></code>, <code class="docutils literal"><span class="pre">md5</span></code>, etc.</p>
+<p>For a complete list of <cite>collectors</cite> and their associated <cite>output names</cite> refer to the
+<cite>McAfee Active Response Product Guide</cite>.</p>
+<p>Each <cite>projection</cite> specified must contain the following fields:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">name</span></code>: The name of the <cite>collector</cite> to project</li>
+<li><code class="docutils literal"><span class="pre">outputs</span></code>: An array of <cite>output names</cite> of the <cite>collector</cite> to project</li>
+</ul>
+<p>The python <code class="docutils literal"><span class="pre">list</span></code> below is equivalent to the <cite>projections</cite> within the following textual search:</p>
+<p><code class="docutils literal"><span class="pre">Processes</span> <span class="pre">name,</span> <span class="pre">id</span> <span class="pre">where</span> <span class="pre">Processes</span> <span class="pre">name</span> <span class="pre">equals</span> <span class="pre">&quot;csrss&quot;</span> <span class="pre">and</span> <span class="pre">Processes</span> <span class="pre">name</span> <span class="pre">contains</span> <span class="pre">&quot;exe&quot;</span> <span class="pre">or</span> <span class="pre">Processes</span>
+<span class="pre">size</span> <span class="pre">not</span> <span class="pre">greater</span> <span class="pre">than</span> <span class="pre">200</span></code></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">projections</span><span class="o">=</span><span class="p">[{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Processes&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">]</span>
+<span class="p">}]</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Conditions</strong></p>
+<blockquote>
+<div><p><cite>Conditions</cite> are used to restrict which items are included in the search results. For example, a search
+that collects process-related information could be limited to those processes which match a specified name.</p>
+<p>A condition has a fixed structure starting with an <code class="docutils literal"><span class="pre">or</span></code> conditional operator and allowing only one level
+of <code class="docutils literal"><span class="pre">and</span></code> conditions.</p>
+<p>The python <code class="docutils literal"><span class="pre">dictionary</span></code> below is equivalent to the <cite>conditions</cite> within the following textual search:</p>
+<p><code class="docutils literal"><span class="pre">Processes</span> <span class="pre">name,</span> <span class="pre">id</span> <span class="pre">where</span> <span class="pre">Processes</span> <span class="pre">name</span> <span class="pre">equals</span> <span class="pre">&quot;csrss&quot;</span> <span class="pre">and</span> <span class="pre">Processes</span> <span class="pre">name</span> <span class="pre">contains</span> <span class="pre">&quot;exe&quot;</span> <span class="pre">or</span> <span class="pre">Processes</span>
+<span class="pre">size</span> <span class="pre">not</span> <span class="pre">greater</span> <span class="pre">than</span> <span class="pre">200</span></code></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">conditions</span><span class="o">=</span><span class="p">{</span>
+    <span class="s2">&quot;or&quot;</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;and&quot;</span><span class="p">:</span> <span class="p">[{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Processes&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;output&quot;</span><span class="p">:</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;op&quot;</span><span class="p">:</span> <span class="s2">&quot;EQUALS&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;csrss&quot;</span>
+        <span class="p">},</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Processes&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;output&quot;</span><span class="p">:</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;op&quot;</span><span class="p">:</span> <span class="s2">&quot;CONTAINS&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;exe&quot;</span>
+        <span class="p">}]</span>
+    <span class="p">},</span> <span class="p">{</span>
+        <span class="s2">&quot;and&quot;</span><span class="p">:</span> <span class="p">[{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Processes&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;output&quot;</span><span class="p">:</span> <span class="s2">&quot;size&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;op&quot;</span><span class="p">:</span> <span class="s2">&quot;GREATER_THAN&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;200&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;negated&quot;</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span>
+        <span class="p">}]</span>
+    <span class="p">}]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The following fields are used for each <cite>condition</cite>:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">name</span></code>: The name of the <cite>collector</cite> from which to retrieve a value for comparison</li>
+<li><code class="docutils literal"><span class="pre">output</span></code>: The <cite>output name</cite> from the <cite>collector</cite> that selects the specific value to use for comparison</li>
+<li><code class="docutils literal"><span class="pre">op</span></code>: The comparison operator</li>
+<li><code class="docutils literal"><span class="pre">value</span></code>: The value to compare with the value from the <cite>collector</cite></li>
+<li><code class="docutils literal"><span class="pre">negated</span></code>: (optional) Indicates if the comparison is negated</li>
+</ul>
+<p>The operators available for each value data type are as follows:</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="11%" />
+<col width="11%" />
+<col width="12%" />
+<col width="8%" />
+<col width="13%" />
+<col width="19%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Operator</th>
+<th class="head">NUMBER</th>
+<th class="head">STRING</th>
+<th class="head">BOOLEAN</th>
+<th class="head">DATE</th>
+<th class="head">IPV4IPV6</th>
+<th class="head">REG_STR</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>GREATER_EQUAL_THAN</td>
+<td>x</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>GREATER_THAN</td>
+<td>x</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>LESS_EQUAL_THAN</td>
+<td>x</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>LESS_THAN</td>
+<td>x</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>EQUALS</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x <code class="docutils literal"><span class="pre">(*)</span></code></td>
+</tr>
+<tr class="row-odd"><td>CONTAINS</td>
+<td>&nbsp;</td>
+<td>x</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>x</td>
+<td>x <code class="docutils literal"><span class="pre">(*)</span></code></td>
+</tr>
+<tr class="row-even"><td>STARTS_WITH</td>
+<td>&nbsp;</td>
+<td>x</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>x <code class="docutils literal"><span class="pre">(*)</span></code></td>
+</tr>
+<tr class="row-odd"><td>ENDS_WITH</td>
+<td>&nbsp;</td>
+<td>x</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>x <code class="docutils literal"><span class="pre">(*)</span></code></td>
+</tr>
+<tr class="row-even"><td>BEFORE</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>x</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>AFTER</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>x</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal"><span class="pre">(*)</span></code> Negated field is not supported in those cases.</p>
+</div></blockquote>
+<p><strong>Example Usage</strong></p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Create the client</span>
+<span class="k">with</span> <span class="n">DxlClient</span><span class="p">(</span><span class="n">config</span><span class="p">)</span> <span class="k">as</span> <span class="n">client</span><span class="p">:</span>
+
+    <span class="c1"># Connect to the fabric</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+
+    <span class="c1"># Create the McAfee Active Response (MAR) client</span>
+    <span class="n">marclient</span> <span class="o">=</span> <span class="n">MarClient</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
+
+    <span class="c1"># Execute the search</span>
+    <span class="n">results_context</span> <span class="o">=</span> <span class="n">marclient</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
+            <span class="n">projections</span><span class="o">=</span><span class="p">[{</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Processes&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">]</span>
+            <span class="p">}],</span>
+            <span class="n">conditions</span><span class="o">=</span><span class="p">{</span>
+                <span class="s2">&quot;or&quot;</span><span class="p">:</span> <span class="p">[{</span>
+                    <span class="s2">&quot;and&quot;</span><span class="p">:</span> <span class="p">[{</span>
+                        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Processes&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;output&quot;</span><span class="p">:</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;op&quot;</span><span class="p">:</span> <span class="s2">&quot;EQUALS&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;csrss&quot;</span>
+                    <span class="p">},</span> <span class="p">{</span>
+                        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Processes&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;output&quot;</span><span class="p">:</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;op&quot;</span><span class="p">:</span> <span class="s2">&quot;CONTAINS&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;exe&quot;</span>
+                    <span class="p">}]</span>
+                <span class="p">},</span> <span class="p">{</span>
+                    <span class="s2">&quot;and&quot;</span><span class="p">:</span> <span class="p">[{</span>
+                        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Processes&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;output&quot;</span><span class="p">:</span> <span class="s2">&quot;size&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;op&quot;</span><span class="p">:</span> <span class="s2">&quot;GREATER_THAN&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;200&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;negated&quot;</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span>
+                    <span class="p">}]</span>
+                <span class="p">}]</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>projections</strong> &#8211; A <code class="docutils literal"><span class="pre">list</span></code> containing the <cite>projections</cite> for the search</li>
+<li><strong>conditions</strong> &#8211; (optional) A <code class="docutils literal"><span class="pre">dictionary</span></code> containing the <cite>conditions</cite> for the search</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A <a class="reference internal" href="#dxlmarclient.client.ResultsContext" title="dxlmarclient.client.ResultsContext"><code class="xref py py-class docutils literal"><span class="pre">ResultsContext</span></code></a> object which is used to access the search results.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="dxlmarclient.client.ResultsContext">
+<em class="property">class </em><code class="descclassname">dxlmarclient.client.</code><code class="descname">ResultsContext</code><span class="sig-paren">(</span><em>mar_client</em>, <em>search_id</em>, <em>result_count</em>, <em>error_count</em>, <em>host_count</em>, <em>subscribed_host_count</em><span class="sig-paren">)</span><a class="headerlink" href="#dxlmarclient.client.ResultsContext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>This object is used to access to the results of a MAR search (see <a class="reference internal" href="#dxlmarclient.client.MarClient.search" title="dxlmarclient.client.MarClient.search"><code class="xref py py-func docutils literal"><span class="pre">MarClient.search()</span></code></a>).</p>
+<dl class="attribute">
+<dt id="dxlmarclient.client.ResultsContext.error_count">
+<code class="descname">error_count</code><a class="headerlink" href="#dxlmarclient.client.ResultsContext.error_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>The count of errors that were reported during the search</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dxlmarclient.client.ResultsContext.get_results">
+<code class="descname">get_results</code><span class="sig-paren">(</span><em>offset=0</em>, <em>limit=20</em>, <em>text_filter=''</em>, <em>sort_by='count'</em>, <em>sort_direction='desc'</em><span class="sig-paren">)</span><a class="headerlink" href="#dxlmarclient.client.ResultsContext.get_results" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used to retrieve a particular set of results from a MAR search.</p>
+<p><strong>Results</strong></p>
+<blockquote>
+<div><p>Each search result item has the following fields:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">id</span></code>: The identifier of the item within the the search results</li>
+<li><code class="docutils literal"><span class="pre">count</span></code>: The number of times that the search result was reported</li>
+<li><code class="docutils literal"><span class="pre">created_at</span></code>: The item timestamp</li>
+<li><code class="docutils literal"><span class="pre">output</span></code>: The search result data where each key is composed of <code class="docutils literal"><span class="pre">&lt;CollectorName&gt;|&lt;OutputName&gt;</span></code> and
+the value that correspond to that <cite>collector</cite> and <cite>output name</cite>.</li>
+</ul>
+<p>The python <code class="docutils literal"><span class="pre">dictionary</span></code> below is an example of a result that would be returned from the
+following textual search:</p>
+<p><code class="docutils literal"><span class="pre">Processes</span> <span class="pre">name,</span> <span class="pre">id</span> <span class="pre">where</span> <span class="pre">Processes</span> <span class="pre">name</span> <span class="pre">equals</span> <span class="pre">&quot;csrss&quot;</span> <span class="pre">and</span> <span class="pre">Processes</span> <span class="pre">name</span> <span class="pre">contains</span> <span class="pre">&quot;exe&quot;</span> <span class="pre">or</span> <span class="pre">Processes</span>
+<span class="pre">size</span> <span class="pre">not</span> <span class="pre">greater</span> <span class="pre">than</span> <span class="pre">200</span></code></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;startIndex&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;totalItems&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s2">&quot;currentItemCount&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s2">&quot;itemsPerPage&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="s2">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;{1=[[System Process], 0]}&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s2">&quot;created_at&quot;</span><span class="p">:</span> <span class="s2">&quot;2016-11-16T22:50:04.650Z&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;output&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;Processes|id&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                <span class="s2">&quot;Processes|name&quot;</span><span class="p">:</span> <span class="s2">&quot;[System Process]&quot;</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;{1=[System, 4]}&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;created_at&quot;</span><span class="p">:</span> <span class="s2">&quot;2016-11-16T22:50:04.650Z&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;output&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;Processes|id&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+                <span class="s2">&quot;Processes|name&quot;</span><span class="p">:</span> <span class="s2">&quot;System&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example Usage</strong></p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">results_context</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="n">sort_by</span><span class="o">=</span><span class="s2">&quot;Processes|name&quot;</span><span class="p">,</span> <span class="n">sort_direction</span><span class="o">=</span><span class="s2">&quot;asc&quot;</span><span class="p">)</span>
+
+<span class="c1"># Display items</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">results</span><span class="p">[</span><span class="s2">&quot;items&quot;</span><span class="p">]:</span>
+    <span class="k">print</span> <span class="s2">&quot;    &quot;</span> <span class="o">+</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;output&quot;</span><span class="p">][</span><span class="s2">&quot;Processes|name&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>offset</strong> &#8211; (optional) Index of the first result item to be returned. This value is <code class="docutils literal"><span class="pre">0</span></code> based.
+Default value: <code class="docutils literal"><span class="pre">0</span></code></li>
+<li><strong>limit</strong> &#8211; (optional) The maximum number of items to return in the results. Default value: <code class="docutils literal"><span class="pre">20</span></code></li>
+<li><strong>text_filter</strong> &#8211; (optional) A text based filter to limit the results (this can be any string)</li>
+<li><strong>sort_by</strong> &#8211; (optional) The field that will be used to sort the results. Default value: <code class="docutils literal"><span class="pre">count</span></code></li>
+<li><strong>sort_direction</strong> &#8211; (optional) values: ascending <code class="docutils literal"><span class="pre">asc</span></code> or descending <code class="docutils literal"><span class="pre">desc</span></code> (String).
+Default value: <code class="docutils literal"><span class="pre">desc</span></code></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A <code class="docutils literal"><span class="pre">dictionary</span></code> containing the specified results from the search.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="dxlmarclient.client.ResultsContext.has_results">
+<code class="descname">has_results</code><a class="headerlink" href="#dxlmarclient.client.ResultsContext.has_results" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether the search has results</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="dxlmarclient.client.ResultsContext.host_count">
+<code class="descname">host_count</code><a class="headerlink" href="#dxlmarclient.client.ResultsContext.host_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>The count of endpoints that responded to the search</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="dxlmarclient.client.ResultsContext.result_count">
+<code class="descname">result_count</code><a class="headerlink" href="#dxlmarclient.client.ResultsContext.result_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>The total count of items available in the search results</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="dxlmarclient.client.ResultsContext.subscribed_host_count">
+<code class="descname">subscribed_host_count</code><a class="headerlink" href="#dxlmarclient.client.ResultsContext.subscribed_host_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>The count of endpoints that were connected to the DXL fabric when the search started</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="dxlmarclient.html"
+                        title="previous chapter">dxlmarclient package</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="dxlmarclient.constants.html"
+                        title="next chapter">dxlmarclient.constants module</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/dxlmarclient.client.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dxlmarclient.constants.html" title="dxlmarclient.constants module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="dxlmarclient.html" title="dxlmarclient package"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">McAfee Active Response (MAR) DXL Client Library 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="dxlmarclient.html" >dxlmarclient package</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016, McAfee Inc.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+    </div>
+  </body>
+</html>

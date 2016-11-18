@@ -1,0 +1,18 @@
+dxlmarclient package
+====================
+
+Submodules
+----------
+
+.. toctree::
+
+   dxlmarclient.client
+   dxlmarclient.constants
+
+Module contents
+---------------
+
+.. automodule:: dxlmarclient
+    :members:
+    :undoc-members:
+    :show-inheritance:

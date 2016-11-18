@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Basic Search Sample &#8212; McAfee Active Response (MAR) DXL Client Library 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="McAfee Active Response (MAR) DXL Client Library 0.1.0 documentation" href="index.html" />
+    <link rel="next" title="Basic Paging Sample" href="basicpagingexample.html" />
+    <link rel="prev" title="Samples Configuration" href="sampleconfig.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="basicpagingexample.html" title="Basic Paging Sample"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="sampleconfig.html" title="Samples Configuration"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">McAfee Active Response (MAR) DXL Client Library 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="basic-search-sample">
+<h1>Basic Search Sample<a class="headerlink" href="#basic-search-sample" title="Permalink to this headline">¶</a></h1>
+<p>This sample executes a <cite>McAfee Active Response</cite> search for the IP addresses of hosts that have an Active Response client
+installed.</p>
+<p>This is the same sample that is available in the OpenDXL Python SDK
+(see <a class="reference external" href="https://opendxl.github.io/opendxl-client-python/pydoc/marsearchexample.html">McAfee Active Response Search Sample</a>),
+but has been refactored to use the McAfee Active Response (MAR) DXL client library.</p>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>The samples configuration step has been completed (see <a class="reference internal" href="sampleconfig.html"><span class="doc">Samples Configuration</span></a>)</li>
+<li>A McAfee Active Response (MAR) Service is available on the DXL fabric</li>
+<li>The Python client has been authorized to perform MAR searches (see
+<a class="reference external" href="https://opendxl.github.io/opendxl-client-python/pydoc/marsendauth.html">Authorize Client To Perform MAR Search</a>
+in the OpenDXL Python SDK Documentation)</li>
+</ul>
+</div>
+<div class="section" id="running">
+<h2>Running<a class="headerlink" href="#running" title="Permalink to this headline">¶</a></h2>
+<p>To run this sample execute the <code class="docutils literal"><span class="pre">sample/basic/basic_search_example.py</span></code> script as follows:</p>
+<blockquote>
+<div><pre class="literal-block">
+c:\dxlmarclient-0.1.0&gt;python sample/basic/basic_search_example.py
+</pre>
+</div></blockquote>
+<p>The output should appear similar to the following:</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Results</span><span class="p">:</span>
+    <span class="mf">192.168</span><span class="o">.</span><span class="mf">130.152</span>
+    <span class="mf">192.168</span><span class="o">.</span><span class="mf">130.133</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="details">
+<h2>Details<a class="headerlink" href="#details" title="Permalink to this headline">¶</a></h2>
+<p>The majority of the sample code is shown below:</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Create the client</span>
+<span class="k">with</span> <span class="n">DxlClient</span><span class="p">(</span><span class="n">config</span><span class="p">)</span> <span class="k">as</span> <span class="n">client</span><span class="p">:</span>
+
+    <span class="c1"># Connect to the fabric</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+
+    <span class="c1"># Create the McAfee Active Response (MAR) client</span>
+    <span class="n">mar_client</span> <span class="o">=</span> <span class="n">MarClient</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
+
+    <span class="c1"># Performs the search</span>
+    <span class="n">result_context</span> <span class="o">=</span> \
+        <span class="n">mar_client</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
+            <span class="n">projections</span><span class="o">=</span><span class="p">[{</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;HostInfo&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;ip_address&quot;</span><span class="p">]</span>
+            <span class="p">}]</span>
+        <span class="p">)</span>
+
+    <span class="c1"># Loop and display the results</span>
+    <span class="k">if</span> <span class="n">result_context</span><span class="o">.</span><span class="n">has_results</span><span class="p">:</span>
+        <span class="n">search_result</span> <span class="o">=</span> <span class="n">result_context</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+        <span class="k">print</span> <span class="s2">&quot;Results:&quot;</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">search_result</span><span class="p">[</span><span class="s2">&quot;items&quot;</span><span class="p">]:</span>
+            <span class="k">print</span> <span class="s2">&quot;    &quot;</span> <span class="o">+</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;output&quot;</span><span class="p">][</span><span class="s1">&#39;HostInfo|ip_address&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Once a connection is established to the DXL fabric, a <a class="reference internal" href="dxlmarclient.client.html#dxlmarclient.client.MarClient" title="dxlmarclient.client.MarClient"><code class="xref py py-class docutils literal"><span class="pre">dxlmarclient.client.MarClient</span></code></a> instance is created
+which will be used to perform searches.</p>
+<p>Next, a search to collect the IP addresses for monitored systems is performed by invoking
+the <a class="reference internal" href="dxlmarclient.client.html#dxlmarclient.client.MarClient.search" title="dxlmarclient.client.MarClient.search"><code class="xref py py-func docutils literal"><span class="pre">dxlmarclient.client.MarClient.search()</span></code></a> method of the <a class="reference internal" href="dxlmarclient.client.html#dxlmarclient.client.MarClient" title="dxlmarclient.client.MarClient"><code class="xref py py-class docutils literal"><span class="pre">dxlmarclient.client.MarClient</span></code></a> instance.</p>
+<p>Once the search has completed, the first 10 results are retrieved by invoking the
+<a class="reference internal" href="dxlmarclient.client.html#dxlmarclient.client.ResultsContext.get_results" title="dxlmarclient.client.ResultsContext.get_results"><code class="xref py py-func docutils literal"><span class="pre">dxlmarclient.client.ResultsContext.get_results()</span></code></a> method of the <a class="reference internal" href="dxlmarclient.client.html#dxlmarclient.client.ResultsContext" title="dxlmarclient.client.ResultsContext"><code class="xref py py-class docutils literal"><span class="pre">dxlmarclient.client.ResultsContext</span></code></a>
+object that was returned from invoking the search method. The results are iterated and printed to the screen.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Basic Search Sample</a><ul>
+<li><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li><a class="reference internal" href="#running">Running</a></li>
+<li><a class="reference internal" href="#details">Details</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="sampleconfig.html"
+                        title="previous chapter">Samples Configuration</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="basicpagingexample.html"
+                        title="next chapter">Basic Paging Sample</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/basicsearchexample.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="basicpagingexample.html" title="Basic Paging Sample"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="sampleconfig.html" title="Samples Configuration"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">McAfee Active Response (MAR) DXL Client Library 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016, McAfee Inc.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+    </div>
+  </body>
+</html>

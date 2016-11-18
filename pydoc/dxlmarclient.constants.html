@@ -1,0 +1,413 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>dxlmarclient.constants module &#8212; McAfee Active Response (MAR) DXL Client Library 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="McAfee Active Response (MAR) DXL Client Library 0.1.0 documentation" href="index.html" />
+    <link rel="up" title="dxlmarclient package" href="dxlmarclient.html" />
+    <link rel="next" title="Samples Configuration" href="sampleconfig.html" />
+    <link rel="prev" title="dxlmarclient.client module" href="dxlmarclient.client.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="sampleconfig.html" title="Samples Configuration"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="dxlmarclient.client.html" title="dxlmarclient.client module"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">McAfee Active Response (MAR) DXL Client Library 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="dxlmarclient.html" accesskey="U">dxlmarclient package</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-dxlmarclient.constants">
+<span id="dxlmarclient-constants-module"></span><h1>dxlmarclient.constants module<a class="headerlink" href="#module-dxlmarclient.constants" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="dxlmarclient.constants.ConditionConstants">
+<em class="property">class </em><code class="descclassname">dxlmarclient.constants.</code><code class="descname">ConditionConstants</code><a class="headerlink" href="#dxlmarclient.constants.ConditionConstants" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constants that are used to describe a <cite>condition</cite>.</p>
+<blockquote>
+<div><p>The following statement:</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">conditions</span><span class="o">=</span><span class="p">{</span>
+    <span class="s2">&quot;or&quot;</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;and&quot;</span><span class="p">:</span> <span class="p">[{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;HostInfo&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;output&quot;</span><span class="p">:</span> <span class="s2">&quot;ip_address&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;op&quot;</span><span class="p">:</span> <span class="s2">&quot;EQUALS&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.1.1&quot;</span>
+        <span class="p">}]</span>
+    <span class="p">}]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Can be rewritten to use <a class="reference internal" href="#dxlmarclient.constants.ConditionConstants" title="dxlmarclient.constants.ConditionConstants"><code class="xref py py-class docutils literal"><span class="pre">ConditionConstants</span></code></a> as follows:</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">conditions</span><span class="o">=</span><span class="p">{</span>
+    <span class="n">ConditionConstants</span><span class="o">.</span><span class="n">OR</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="n">ConditionConstants</span><span class="o">.</span><span class="n">AND</span><span class="p">:</span> <span class="p">[{</span>
+            <span class="n">ConditionConstants</span><span class="o">.</span><span class="n">COND_NAME</span><span class="p">:</span> <span class="s2">&quot;HostInfo&quot;</span><span class="p">,</span>
+            <span class="n">ConditionConstants</span><span class="o">.</span><span class="n">COND_OUTPUT</span><span class="p">:</span> <span class="s2">&quot;ip_address&quot;</span><span class="p">,</span>
+            <span class="n">ConditionConstants</span><span class="o">.</span><span class="n">COND_OP</span><span class="p">:</span> <span class="s2">&quot;EQUALS&quot;</span><span class="p">,</span>
+            <span class="n">ConditionConstants</span><span class="o">.</span><span class="n">COND_VALUE</span><span class="p">:</span> <span class="s2">&quot;192.168.1.1&quot;</span>
+        <span class="p">}]</span>
+    <span class="p">}]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<dl class="attribute">
+<dt id="dxlmarclient.constants.ConditionConstants.AND">
+<code class="descname">AND</code><em class="property"> = 'and'</em><a class="headerlink" href="#dxlmarclient.constants.ConditionConstants.AND" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dxlmarclient.constants.ConditionConstants.COND_NAME">
+<code class="descname">COND_NAME</code><em class="property"> = 'name'</em><a class="headerlink" href="#dxlmarclient.constants.ConditionConstants.COND_NAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dxlmarclient.constants.ConditionConstants.COND_OP">
+<code class="descname">COND_OP</code><em class="property"> = 'op'</em><a class="headerlink" href="#dxlmarclient.constants.ConditionConstants.COND_OP" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dxlmarclient.constants.ConditionConstants.COND_OUTPUT">
+<code class="descname">COND_OUTPUT</code><em class="property"> = 'output'</em><a class="headerlink" href="#dxlmarclient.constants.ConditionConstants.COND_OUTPUT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dxlmarclient.constants.ConditionConstants.COND_VALUE">
+<code class="descname">COND_VALUE</code><em class="property"> = 'value'</em><a class="headerlink" href="#dxlmarclient.constants.ConditionConstants.COND_VALUE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dxlmarclient.constants.ConditionConstants.OR">
+<code class="descname">OR</code><em class="property"> = 'or'</em><a class="headerlink" href="#dxlmarclient.constants.ConditionConstants.OR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="dxlmarclient.constants.OperatorConstants">
+<em class="property">class </em><code class="descclassname">dxlmarclient.constants.</code><code class="descname">OperatorConstants</code><a class="headerlink" href="#dxlmarclient.constants.OperatorConstants" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constants that describe the <cite>operator</cite> to use within a <cite>condition</cite>.</p>
+<blockquote>
+<div><p>The following statement:</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">conditions</span><span class="o">=</span><span class="p">{</span>
+    <span class="s2">&quot;or&quot;</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;and&quot;</span><span class="p">:</span> <span class="p">[{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;HostInfo&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;output&quot;</span><span class="p">:</span> <span class="s2">&quot;ip_address&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;op&quot;</span><span class="p">:</span> <span class="s2">&quot;EQUALS&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.1.1&quot;</span>
+        <span class="p">}]</span>
+    <span class="p">}]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Can be rewritten to use <a class="reference internal" href="#dxlmarclient.constants.OperatorConstants" title="dxlmarclient.constants.OperatorConstants"><code class="xref py py-class docutils literal"><span class="pre">OperatorConstants</span></code></a> as follows:</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span> <span class="n">conditions</span><span class="o">=</span><span class="p">{</span>
+     <span class="s2">&quot;or&quot;</span><span class="p">:</span> <span class="p">[{</span>
+         <span class="s2">&quot;and&quot;</span><span class="p">:</span> <span class="p">[{</span>
+             <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;HostInfo&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;output&quot;</span><span class="p">:</span> <span class="s2">&quot;ip_address&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;op&quot;</span><span class="p">:</span> <span class="n">OperatorConstants</span><span class="o">.</span><span class="n">EQUALS</span><span class="p">,</span>
+             <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.1.1&quot;</span>
+         <span class="p">}]</span>
+     <span class="p">}]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<dl class="attribute">
+<dt id="dxlmarclient.constants.OperatorConstants.AFTER">
+<code class="descname">AFTER</code><em class="property"> = 'AFTER'</em><a class="headerlink" href="#dxlmarclient.constants.OperatorConstants.AFTER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dxlmarclient.constants.OperatorConstants.BEFORE">
+<code class="descname">BEFORE</code><em class="property"> = 'BEFORE'</em><a class="headerlink" href="#dxlmarclient.constants.OperatorConstants.BEFORE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dxlmarclient.constants.OperatorConstants.CONTAINS">
+<code class="descname">CONTAINS</code><em class="property"> = 'CONTAINS'</em><a class="headerlink" href="#dxlmarclient.constants.OperatorConstants.CONTAINS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dxlmarclient.constants.OperatorConstants.ENDS_WITH">
+<code class="descname">ENDS_WITH</code><em class="property"> = 'ENDS_WITH'</em><a class="headerlink" href="#dxlmarclient.constants.OperatorConstants.ENDS_WITH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dxlmarclient.constants.OperatorConstants.EQUALS">
+<code class="descname">EQUALS</code><em class="property"> = 'EQUALS'</em><a class="headerlink" href="#dxlmarclient.constants.OperatorConstants.EQUALS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dxlmarclient.constants.OperatorConstants.GREATER_EQUAL_THAN">
+<code class="descname">GREATER_EQUAL_THAN</code><em class="property"> = 'GREATER_EQUAL_THAN'</em><a class="headerlink" href="#dxlmarclient.constants.OperatorConstants.GREATER_EQUAL_THAN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dxlmarclient.constants.OperatorConstants.GREATER_THAN">
+<code class="descname">GREATER_THAN</code><em class="property"> = 'GREATER_THAN'</em><a class="headerlink" href="#dxlmarclient.constants.OperatorConstants.GREATER_THAN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dxlmarclient.constants.OperatorConstants.LESS_EQUAL_THAN">
+<code class="descname">LESS_EQUAL_THAN</code><em class="property"> = 'LESS_EQUAL_THAN'</em><a class="headerlink" href="#dxlmarclient.constants.OperatorConstants.LESS_EQUAL_THAN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dxlmarclient.constants.OperatorConstants.LESS_THAN">
+<code class="descname">LESS_THAN</code><em class="property"> = 'LESS_THAN'</em><a class="headerlink" href="#dxlmarclient.constants.OperatorConstants.LESS_THAN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dxlmarclient.constants.OperatorConstants.STARTS_WITH">
+<code class="descname">STARTS_WITH</code><em class="property"> = 'STARTS_WITH'</em><a class="headerlink" href="#dxlmarclient.constants.OperatorConstants.STARTS_WITH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="dxlmarclient.constants.ProjectionConstants">
+<em class="property">class </em><code class="descclassname">dxlmarclient.constants.</code><code class="descname">ProjectionConstants</code><a class="headerlink" href="#dxlmarclient.constants.ProjectionConstants" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constants that are used to describe a <cite>projection</cite>.</p>
+<blockquote>
+<div><p>The following statement:</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">projections</span><span class="o">=</span><span class="p">[{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;HostInfo&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;ip_address&quot;</span><span class="p">]</span>
+<span class="p">}]</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Can be rewritten to use <a class="reference internal" href="#dxlmarclient.constants.ProjectionConstants" title="dxlmarclient.constants.ProjectionConstants"><code class="xref py py-class docutils literal"><span class="pre">ProjectionConstants</span></code></a> as follows:</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">projections</span><span class="o">=</span><span class="p">[{</span>
+    <span class="n">ProjectionConstants</span><span class="o">.</span><span class="n">NAME</span><span class="p">:</span> <span class="s2">&quot;HostInfo&quot;</span><span class="p">,</span>
+    <span class="n">ProjectionConstants</span><span class="o">.</span><span class="n">OUTPUTS</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;ip_address&quot;</span><span class="p">]</span>
+<span class="p">}]</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<dl class="attribute">
+<dt id="dxlmarclient.constants.ProjectionConstants.NAME">
+<code class="descname">NAME</code><em class="property"> = 'name'</em><a class="headerlink" href="#dxlmarclient.constants.ProjectionConstants.NAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dxlmarclient.constants.ProjectionConstants.OUTPUTS">
+<code class="descname">OUTPUTS</code><em class="property"> = 'outputs'</em><a class="headerlink" href="#dxlmarclient.constants.ProjectionConstants.OUTPUTS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="dxlmarclient.constants.ResultConstants">
+<em class="property">class </em><code class="descclassname">dxlmarclient.constants.</code><code class="descname">ResultConstants</code><a class="headerlink" href="#dxlmarclient.constants.ResultConstants" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constants that are used access the information contained in the results of a search.</p>
+<blockquote>
+<div><p>The following statement:</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">search_result</span> <span class="o">=</span> <span class="n">result_context</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="k">print</span> <span class="s2">&quot;Total items: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">search_result</span><span class="p">[</span><span class="s2">&quot;totalItems&quot;</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">search_result</span><span class="p">[</span><span class="s2">&quot;items&quot;</span><span class="p">]:</span>
+    <span class="k">print</span> <span class="s2">&quot;    &quot;</span> <span class="o">+</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;output&quot;</span><span class="p">][</span><span class="s1">&#39;HostInfo|ip_address&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Can be rewritten to use <a class="reference internal" href="#dxlmarclient.constants.ResultConstants" title="dxlmarclient.constants.ResultConstants"><code class="xref py py-class docutils literal"><span class="pre">ResultConstants</span></code></a> as follows:</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">search_result</span> <span class="o">=</span> <span class="n">result_context</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="k">print</span> <span class="s2">&quot;Total items: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">search_result</span><span class="p">[</span><span class="n">ResultConstants</span><span class="o">.</span><span class="n">TOTAL_ITEMS</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">search_result</span><span class="p">[</span><span class="n">ResultConstants</span><span class="o">.</span><span class="n">ITEMS</span><span class="p">]:</span>
+    <span class="k">print</span> <span class="s2">&quot;    &quot;</span> <span class="o">+</span> <span class="n">item</span><span class="p">[</span><span class="n">ResultConstants</span><span class="o">.</span><span class="n">ITEM_OUTPUT</span><span class="p">][</span><span class="s1">&#39;HostInfo|ip_address&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<dl class="attribute">
+<dt id="dxlmarclient.constants.ResultConstants.CURRENT_ITEM_COUNT">
+<code class="descname">CURRENT_ITEM_COUNT</code><em class="property"> = 'currentItemCount'</em><a class="headerlink" href="#dxlmarclient.constants.ResultConstants.CURRENT_ITEM_COUNT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dxlmarclient.constants.ResultConstants.ITEMS">
+<code class="descname">ITEMS</code><em class="property"> = 'items'</em><a class="headerlink" href="#dxlmarclient.constants.ResultConstants.ITEMS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dxlmarclient.constants.ResultConstants.ITEMS_PER_PAGE">
+<code class="descname">ITEMS_PER_PAGE</code><em class="property"> = 'itemsPerPage'</em><a class="headerlink" href="#dxlmarclient.constants.ResultConstants.ITEMS_PER_PAGE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dxlmarclient.constants.ResultConstants.ITEM_COUNT">
+<code class="descname">ITEM_COUNT</code><em class="property"> = 'count'</em><a class="headerlink" href="#dxlmarclient.constants.ResultConstants.ITEM_COUNT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dxlmarclient.constants.ResultConstants.ITEM_CREATED_AT">
+<code class="descname">ITEM_CREATED_AT</code><em class="property"> = 'created_at'</em><a class="headerlink" href="#dxlmarclient.constants.ResultConstants.ITEM_CREATED_AT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dxlmarclient.constants.ResultConstants.ITEM_ID">
+<code class="descname">ITEM_ID</code><em class="property"> = 'id'</em><a class="headerlink" href="#dxlmarclient.constants.ResultConstants.ITEM_ID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dxlmarclient.constants.ResultConstants.ITEM_OUTPUT">
+<code class="descname">ITEM_OUTPUT</code><em class="property"> = 'output'</em><a class="headerlink" href="#dxlmarclient.constants.ResultConstants.ITEM_OUTPUT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dxlmarclient.constants.ResultConstants.START_INDEX">
+<code class="descname">START_INDEX</code><em class="property"> = 'startIndex'</em><a class="headerlink" href="#dxlmarclient.constants.ResultConstants.START_INDEX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dxlmarclient.constants.ResultConstants.TOTAL_ITEMS">
+<code class="descname">TOTAL_ITEMS</code><em class="property"> = 'totalItems'</em><a class="headerlink" href="#dxlmarclient.constants.ResultConstants.TOTAL_ITEMS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="dxlmarclient.constants.SortConstants">
+<em class="property">class </em><code class="descclassname">dxlmarclient.constants.</code><code class="descname">SortConstants</code><a class="headerlink" href="#dxlmarclient.constants.SortConstants" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constants that describe the direction the search results should be sorted (ascending vs. descending)</p>
+<blockquote>
+<div><p>The following statement:</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">results_context</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="n">sort_by</span><span class="o">=</span><span class="s2">&quot;Processes|name&quot;</span><span class="p">,</span> <span class="n">sort_direction</span><span class="o">=</span><span class="s2">&quot;asc&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Can be rewritten to use <a class="reference internal" href="#dxlmarclient.constants.SortConstants" title="dxlmarclient.constants.SortConstants"><code class="xref py py-class docutils literal"><span class="pre">SortConstants</span></code></a> as follows:</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">results_context</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="n">sort_by</span><span class="o">=</span><span class="s2">&quot;Processes|name&quot;</span><span class="p">,</span> <span class="n">sort_direction</span><span class="o">=</span><span class="n">SortConstants</span><span class="o">.</span><span class="n">ASC</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<dl class="attribute">
+<dt id="dxlmarclient.constants.SortConstants.ASC">
+<code class="descname">ASC</code><em class="property"> = 'asc'</em><a class="headerlink" href="#dxlmarclient.constants.SortConstants.ASC" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dxlmarclient.constants.SortConstants.DESC">
+<code class="descname">DESC</code><em class="property"> = 'desc'</em><a class="headerlink" href="#dxlmarclient.constants.SortConstants.DESC" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="dxlmarclient.client.html"
+                        title="previous chapter">dxlmarclient.client module</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="sampleconfig.html"
+                        title="next chapter">Samples Configuration</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/dxlmarclient.constants.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="sampleconfig.html" title="Samples Configuration"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="dxlmarclient.client.html" title="dxlmarclient.client module"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">McAfee Active Response (MAR) DXL Client Library 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="dxlmarclient.html" >dxlmarclient package</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016, McAfee Inc.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+    </div>
+  </body>
+</html>
