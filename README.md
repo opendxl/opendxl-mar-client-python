@@ -1,16 +1,16 @@
-# McAfee Active Response (MAR) Python Client Library
+# McAfee Active Response (MAR) DXL Python Client Library
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ## Documentation
 
-See the [Wiki](https://github.com/opendxl/opendxl-mar-client-python/wiki) for an overview of the McAfee Active Response (MAR) Python client library and examples.
+See the [Wiki](https://github.com/opendxl/opendxl-mar-client-python/wiki) for an overview of the McAfee Active Response (MAR) DXL Python client library and examples.
 
-See the [McAfee Active Response (MAR) Python Client Library Documentation](https://opendxl.github.io/opendxl-mar-client-python/pydoc) for
+See the [McAfee Active Response (MAR) DXL Python Client Library Documentation](https://opendxl.github.io/opendxl-mar-client-python/pydoc) for
 installation instructions, API documentation, and examples.
 
 ## Installation
 
-To start using the McAfee Active Response (MAR) Python Client Library:
+To start using the McAfee Active Response (MAR) DXL Python Client Library:
 
 * Download the [Latest Release](https://github.com/opendxl/opendxl-mar-client-python/releases/latest)
 * Extract the release .zip file
