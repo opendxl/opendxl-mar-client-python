@@ -23,7 +23,7 @@ To run this sample execute the ``sample/basic/basic_search_example.py`` script a
 
     .. parsed-literal::
 
-        c:\\dxlmarclient-\ |version|\>python sample/basic/basic_search_example.py
+        c:\\dxlmarclient-python-sdk-\ |version|\>python sample/basic/basic_search_example.py
 
 The output should appear similar to the following:
 
