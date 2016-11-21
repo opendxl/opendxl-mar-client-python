@@ -7,7 +7,7 @@ from __future__ import absolute_import
 from .client import MarClient
 from .constants import SortConstants, OperatorConstants, ConditionConstants, ProjectionConstants, ResultConstants
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 
 def get_version():
