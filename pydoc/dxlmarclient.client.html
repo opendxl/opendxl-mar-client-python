@@ -92,6 +92,14 @@ lower-level details such as MAR-specific DXL topics and message formats.</p>
 <dd><p>Executes a search via McAfee Active Response.</p>
 <p>Once the search has completed a <a class="reference internal" href="#dxlmarclient.client.ResultsContext" title="dxlmarclient.client.ResultsContext"><code class="xref py py-class docutils literal"><span class="pre">ResultsContext</span></code></a> object is returned which is used to access the
 search results.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p><strong>Client Authorization</strong></p>
+<p>The OpenDXL Python client invoking this method must have permission to send messages to the
+<code class="docutils literal"><span class="pre">/mcafee/mar/service/api/search</span></code> topic.</p>
+<p>See the following page for details on authorizing a client to perform MAR searches:</p>
+<p class="last"><a class="reference external" href="https://opendxl.github.io/opendxl-client-python/pydoc/marsendauth.html">https://opendxl.github.io/opendxl-client-python/pydoc/marsendauth.html</a></p>
+</div>
 <p>Execution of a MAR search requires a <code class="docutils literal"><span class="pre">list</span></code> of <cite>projections</cite> and an optional <code class="docutils literal"><span class="pre">dictionary</span></code> containing
 the search <cite>conditions</cite>.</p>
 <p><strong>Projections</strong></p>
