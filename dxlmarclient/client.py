@@ -76,6 +76,17 @@ class MarClient(object):
         Once the search has completed a :class:`ResultsContext` object is returned which is used to access the
         search results.
 
+        .. note::
+
+            **Client Authorization**
+
+            The OpenDXL Python client invoking this method must have permission to send messages to the
+            ``/mcafee/mar/service/api/search`` topic.
+
+            See the following page for details on authorizing a client to perform MAR searches:
+
+            `<https://opendxl.github.io/opendxl-client-python/pydoc/marsendauth.html>`_
+
         Execution of a MAR search requires a ``list`` of `projections` and an optional ``dictionary`` containing
         the search `conditions`.
 
