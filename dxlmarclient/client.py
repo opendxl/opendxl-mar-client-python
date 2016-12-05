@@ -378,7 +378,7 @@ class ResultsContext(object):
 
             Each search result item has the following fields:
 
-            * ``id``: The identifier of the item within the the search results
+            * ``id``: The identifier of the item within the search results
             * ``count``: The number of times that the search result was reported
             * ``created_at``: The item timestamp
             * ``output``: The search result data where each key is composed of ``<CollectorName>|<OutputName>`` and
