@@ -6,19 +6,22 @@
 
 class SortConstants:
     """
-    Constants that describe the direction the search results should be sorted (ascending vs. descending)
+    Constants that describe the direction the search results should be sorted
+    (ascending vs. descending)
 
         The following statement:
 
             .. code-block:: python
 
-                results = results_context.get_results(sort_by="Processes|name", sort_direction="asc")
+                results = results_context.get_results(sort_by="Processes|name",
+                    sort_direction="asc")
 
         Can be rewritten to use :class:`SortConstants` as follows:
 
             .. code-block:: python
 
-                results = results_context.get_results(sort_by="Processes|name", sort_direction=SortConstants.ASC)
+                results = results_context.get_results(sort_by="Processes|name",
+                    sort_direction=SortConstants.ASC)
     """
     ASC = "asc"
     DESC = "desc"

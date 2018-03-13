@@ -6,7 +6,8 @@ from __future__ import absolute_import
 
 from ._version import __version__
 from .client import MarClient
-from .constants import SortConstants, OperatorConstants, ConditionConstants, ProjectionConstants, ResultConstants
+from .constants import SortConstants, OperatorConstants, ConditionConstants
+from .constants import ProjectionConstants, ResultConstants
 
 
 def get_version():
