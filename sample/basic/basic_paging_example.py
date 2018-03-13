@@ -7,6 +7,8 @@
 #       system to collect process information from in the HOST_IP constant
 #       below.
 
+from __future__ import absolute_import
+from __future__ import print_function
 import os
 import sys
 
@@ -14,6 +16,7 @@ from dxlclient.client_config import DxlClientConfig
 from dxlclient.client import DxlClient
 from dxlmarclient import MarClient, ResultConstants, ProjectionConstants, \
     ConditionConstants, SortConstants, OperatorConstants
+from six.moves import range
 
 # Import common logging and configuration
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/..")
@@ -67,6 +70,6 @@ with DxlClient(config) as client:
                                                   sort_by="Processes|name",
                                                   sort_direction=SortConstants.ASC)
             # Display items in the current page
-            print "Page: " + str((index/PAGE_SIZE)+1)
+            print("Page: " + str((index/PAGE_SIZE)+1))
             for item in results[ResultConstants.ITEMS]:
-                print "    " + item[ResultConstants.ITEM_OUTPUT]["Processes|name"]
+                print("    " + item[ResultConstants.ITEM_OUTPUT]["Processes|name"])

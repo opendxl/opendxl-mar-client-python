@@ -3,11 +3,12 @@
 # Copyright (c) 2017 McAfee Inc. - All Rights Reserved.
 ################################################################################
 
+from __future__ import absolute_import
 import json
 import logging
 import time
 from dxlclient import Request, Message
-from constants import SortConstants
+from .constants import SortConstants
 
 # Configure local logger
 logger = logging.getLogger(__name__)

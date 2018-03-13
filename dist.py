@@ -3,6 +3,8 @@
 # Copyright (c) 2017 McAfee Inc. - All Rights Reserved.
 ################################################################################
 
+from __future__ import absolute_import
+from __future__ import print_function
 import os
 import subprocess
 from distutils.dir_util import copy_tree, remove_tree
@@ -24,11 +26,11 @@ DIST_RELEASE_DIR = os.path.join(DIST_DIRECTORY, RELEASE_NAME)
 
 # Remove the dist directory if it exists
 if os.path.exists(DIST_DIRECTORY):
-    print("\nRemoving dist directory: " + DIST_DIRECTORY + "\n")
+    print(("\nRemoving dist directory: " + DIST_DIRECTORY + "\n"))
     remove_tree(DIST_DIRECTORY, verbose=1)
 
 # Make the dist directory
-print("\nMaking dist directory: " + DIST_DIRECTORY + "\n")
+print(("\nMaking dist directory: " + DIST_DIRECTORY + "\n"))
 os.makedirs(DIST_DIRECTORY)
 
 # Call Sphinx to create API doc
@@ -85,7 +87,7 @@ print("\nCopying sample in to dist directory\n")
 copy_tree(os.path.join(DIST_PY_FILE_LOCATION, "sample"), os.path.join(DIST_DIRECTORY, "sample"))
 
 # Copy everything in to release dir
-print("\nCopying dist to " + DIST_RELEASE_DIR + "\n")
+print(("\nCopying dist to " + DIST_RELEASE_DIR + "\n"))
 copy_tree(DIST_DIRECTORY, DIST_RELEASE_DIR)
 
 # rm -rf build
@@ -100,7 +102,7 @@ remove_tree(os.path.join(DIST_PY_FILE_LOCATION, "dxlmarclient.egg-info"))
 print("\nMaking dist zip\n")
 make_archive(DIST_RELEASE_DIR, "zip", DIST_DIRECTORY, RELEASE_NAME)
 
-print("\nRemoving " + DIST_RELEASE_DIR + "\n")
+print(("\nRemoving " + DIST_RELEASE_DIR + "\n"))
 remove_tree(DIST_RELEASE_DIR)
 
 print("\nFinished")
