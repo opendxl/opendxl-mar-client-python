@@ -16,7 +16,6 @@ from dxlclient.client_config import DxlClientConfig
 from dxlclient.client import DxlClient
 from dxlmarclient import MarClient, ResultConstants, ProjectionConstants, \
     ConditionConstants, SortConstants, OperatorConstants
-from six.moves import range
 
 # Import common logging and configuration
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/..")
