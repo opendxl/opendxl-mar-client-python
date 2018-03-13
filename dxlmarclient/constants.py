@@ -4,7 +4,7 @@
 ################################################################################
 
 
-class SortConstants:
+class SortConstants(object):
     """
     Constants that describe the direction the search results should be sorted
     (ascending vs. descending)
@@ -26,7 +26,8 @@ class SortConstants:
     ASC = "asc"
     DESC = "desc"
 
-class OperatorConstants:
+
+class OperatorConstants(object):
     """
     Constants that describe the `operator` to use within a `condition`.
 
@@ -71,7 +72,8 @@ class OperatorConstants:
     BEFORE = "BEFORE"
     AFTER = "AFTER"
 
-class ProjectionConstants:
+
+class ProjectionConstants(object):
     """
     Constants that are used to describe a `projection`.
 
@@ -97,7 +99,8 @@ class ProjectionConstants:
     NAME = "name"
     OUTPUTS = "outputs"
 
-class ConditionConstants:
+
+class ConditionConstants(object):
     """
     Constants that are used to describe a `condition`.
 
@@ -138,9 +141,11 @@ class ConditionConstants:
     COND_OP = "op"
     COND_VALUE = "value"
 
-class ResultConstants:
+
+class ResultConstants(object):
     """
-    Constants that are used access the information contained in the results of a search.
+    Constants that are used access the information contained in the results of a
+    search.
 
         The following statement:
 
