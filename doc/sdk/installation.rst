@@ -16,6 +16,9 @@ Prerequisites
 * OpenDXL Python Client has permission to perform MAR searches
     `<https://opendxl.github.io/opendxl-client-python/pydoc/marsendauth.html>`_
 
+* Python 2.7.9 or higher in the Python 2.x series or Python 3.4.0 or higher
+  in the Python 3.x series installed within a Windows or Linux environment.
+
 Installation
 ************
 
