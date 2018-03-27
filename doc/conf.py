@@ -63,3 +63,4 @@ autoclass_content = 'both'
 
 modindex_common_prefix = ['dxlmarclient.']
 
+html_use_smartypants = False
