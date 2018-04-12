@@ -61,9 +61,9 @@ The majority of the sample code is shown below:
             # Loop and display the results
             if result_context.has_results:
                 search_result = result_context.get_results(limit=10)
-                print "Results:"
+                print("Results:")
                 for item in search_result["items"]:
-                    print "    " + item["output"]['HostInfo|ip_address']
+                    print("    " + item["output"]['HostInfo|ip_address'])
 
 
 Once a connection is established to the DXL fabric, a :class:`dxlmarclient.client.MarClient` instance is created
@@ -75,5 +75,3 @@ the :func:`dxlmarclient.client.MarClient.search` method of the :class:`dxlmarcli
 Once the search has completed, the first 10 results are retrieved by invoking the
 :func:`dxlmarclient.client.ResultsContext.get_results` method of the :class:`dxlmarclient.client.ResultsContext`
 object that was returned from invoking the search method. The results are iterated and printed to the screen.
-
-
