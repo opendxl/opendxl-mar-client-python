@@ -7,7 +7,9 @@ from __future__ import absolute_import
 import json
 import logging
 import time
-from dxlclient import Request, Message
+from dxlbootstrap.client import Client
+from dxlbootstrap.util import MessageUtils
+from dxlclient import Request
 from .constants import SortConstants
 
 # Configure local logger
@@ -17,7 +19,7 @@ logger = logging.getLogger(__name__)
 MAR_SEARCH_TOPIC = "/mcafee/mar/service/api/search"
 
 
-class MarClient(object):
+class MarClient(Client):
     """
     This client provides a high level wrapper for communicating with the McAfee
     Active Response (MAR) DXL service.
@@ -31,10 +33,6 @@ class MarClient(object):
     __DEFAULT_POLL_INTERVAL = 5
     # The minimum amount of time (in seconds) to wait before polling the MAR server for results
     __MIN_POLL_INTERVAL = 5
-    # The default amount of time (in seconds) to wait for a response from the MAR server
-    __DEFAULT_RESPONSE_TIMEOUT = 30
-    # The minimum amount of time (in seconds) to wait for a response from the MAR server
-    __MIN_RESPONSE_TIMEOUT = 30
 
     def __init__(self, dxl_client):
         """
@@ -42,9 +40,8 @@ class MarClient(object):
 
         :param dxl_client: The DXL client to use for communication with the MAR DXL service
         """
-        self.__dxl_client = dxl_client
+        super(MarClient, self).__init__(dxl_client)
         self.__poll_interval = self.__DEFAULT_POLL_INTERVAL
-        self.__response_timeout = self.__DEFAULT_RESPONSE_TIMEOUT
 
     @property
     def poll_interval(self):
@@ -60,21 +57,6 @@ class MarClient(object):
                 "Poll interval must be greater than or equal to " + str(
                     self.__MIN_POLL_INTERVAL))
         self.__poll_interval = poll_interval
-
-    @property
-    def response_timeout(self):
-        """
-        The maximum amount of time (in seconds) to wait for a response from the MAR server
-        """
-        return self.__response_timeout
-
-    @response_timeout.setter
-    def response_timeout(self, response_timeout):
-        if response_timeout < self.__MIN_RESPONSE_TIMEOUT:
-            raise Exception(
-                "Response timeout must be greater than or equal to " + str(
-                    self.__MIN_RESPONSE_TIMEOUT))
-        self.__response_timeout = response_timeout
 
     def search(self, projections, conditions=None):
         """
@@ -322,36 +304,31 @@ class MarClient(object):
                                 separators=(',', ': ')))
 
         # Send the request and wait for a response (synchronous)
-        res = self.__dxl_client.sync_request(req,
-                                             timeout=self.__response_timeout)
+        res = self._dxl_sync_request(req)
 
         # Return a dictionary corresponding to the response payload
-        if res.message_type != Message.MESSAGE_TYPE_ERROR:
-            resp_dict = json.loads(res.payload.decode(encoding="UTF-8"))
-            # Display the response
-            logger.debug("Response:\n%s",
-                         json.dumps(resp_dict, sort_keys=True, indent=4,
-                                    separators=(',', ': ')))
-            if "code" in resp_dict:
-                code = resp_dict['code']
-                if code < 200 or code >= 300:
-                    if "body" in resp_dict and "applicationErrorList" in \
-                            resp_dict["body"]:
-                        error = resp_dict["body"]["applicationErrorList"][0]
-                        raise Exception(
-                            error["message"] + ": " + str(error["code"]))
-                    elif "body" in resp_dict:
-                        raise Exception(resp_dict["body"] + ": " + str(code))
-                    else:
-                        raise Exception(
-                            "Error: Received failure response code: " + str(
-                                code))
-            else:
-                raise Exception("Error: unable to find response code")
-            return resp_dict
+        resp_dict = MessageUtils.json_payload_to_dict(res)
+        # Display the response
+        logger.debug("Response:\n%s",
+                     json.dumps(resp_dict, sort_keys=True, indent=4,
+                                separators=(',', ': ')))
+        if "code" in resp_dict:
+            code = resp_dict['code']
+            if code < 200 or code >= 300:
+                if "body" in resp_dict and "applicationErrorList" in \
+                        resp_dict["body"]:
+                    error = resp_dict["body"]["applicationErrorList"][0]
+                    raise Exception(
+                        error["message"] + ": " + str(error["code"]))
+                elif "body" in resp_dict:
+                    raise Exception(resp_dict["body"] + ": " + str(code))
+                else:
+                    raise Exception(
+                        "Error: Received failure response code: " + str(
+                            code))
         else:
-            raise Exception("Error: " + res.error_message + " (" + str(
-                res.error_code) + ")")
+            raise Exception("Error: unable to find response code")
+        return resp_dict
 
 
 class ResultsContext(object):
