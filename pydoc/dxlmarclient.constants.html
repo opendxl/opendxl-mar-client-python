@@ -1,36 +1,23 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>dxlmarclient.constants module &#8212; McAfee Active Response (MAR) DXL Client Library 0.1.2 documentation</title>
-    
+    <title>dxlmarclient.constants module &#8212; McAfee Active Response (MAR) DXL Client Library 0.2.0 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '0.1.2',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="top" title="McAfee Active Response (MAR) DXL Client Library 0.1.2 documentation" href="index.html" />
-    <link rel="up" title="dxlmarclient package" href="dxlmarclient.html" />
     <link rel="next" title="Samples Configuration" href="sampleconfig.html" />
     <link rel="prev" title="dxlmarclient.client module" href="dxlmarclient.client.html" /> 
-  </head>
-  <body role="document">
+  </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -46,7 +33,7 @@
         <li class="right" >
           <a href="dxlmarclient.client.html" title="dxlmarclient.client module"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">McAfee Active Response (MAR) DXL Client Library 0.1.2 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">McAfee Active Response (MAR) DXL Client Library 0.2.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="dxlmarclient.html" accesskey="U">dxlmarclient package</a> &#187;</li> 
       </ul>
     </div>  
@@ -61,11 +48,12 @@
 <dl class="class">
 <dt id="dxlmarclient.constants.ConditionConstants">
 <em class="property">class </em><code class="descclassname">dxlmarclient.constants.</code><code class="descname">ConditionConstants</code><a class="headerlink" href="#dxlmarclient.constants.ConditionConstants" title="Permalink to this definition">¶</a></dt>
-<dd><p>Constants that are used to describe a <cite>condition</cite>.</p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Constants that are used to describe a <cite>condition</cite>.</p>
 <blockquote>
 <div><p>The following statement:</p>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">conditions</span><span class="o">=</span><span class="p">{</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">conditions</span><span class="o">=</span><span class="p">{</span>
     <span class="s2">&quot;or&quot;</span><span class="p">:</span> <span class="p">[{</span>
         <span class="s2">&quot;and&quot;</span><span class="p">:</span> <span class="p">[{</span>
             <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;HostInfo&quot;</span><span class="p">,</span>
@@ -78,9 +66,9 @@
 </pre></div>
 </div>
 </div></blockquote>
-<p>Can be rewritten to use <a class="reference internal" href="#dxlmarclient.constants.ConditionConstants" title="dxlmarclient.constants.ConditionConstants"><code class="xref py py-class docutils literal"><span class="pre">ConditionConstants</span></code></a> as follows:</p>
+<p>Can be rewritten to use <a class="reference internal" href="#dxlmarclient.constants.ConditionConstants" title="dxlmarclient.constants.ConditionConstants"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConditionConstants</span></code></a> as follows:</p>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">conditions</span><span class="o">=</span><span class="p">{</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">conditions</span><span class="o">=</span><span class="p">{</span>
     <span class="n">ConditionConstants</span><span class="o">.</span><span class="n">OR</span><span class="p">:</span> <span class="p">[{</span>
         <span class="n">ConditionConstants</span><span class="o">.</span><span class="n">AND</span><span class="p">:</span> <span class="p">[{</span>
             <span class="n">ConditionConstants</span><span class="o">.</span><span class="n">COND_NAME</span><span class="p">:</span> <span class="s2">&quot;HostInfo&quot;</span><span class="p">,</span>
@@ -129,11 +117,12 @@
 <dl class="class">
 <dt id="dxlmarclient.constants.OperatorConstants">
 <em class="property">class </em><code class="descclassname">dxlmarclient.constants.</code><code class="descname">OperatorConstants</code><a class="headerlink" href="#dxlmarclient.constants.OperatorConstants" title="Permalink to this definition">¶</a></dt>
-<dd><p>Constants that describe the <cite>operator</cite> to use within a <cite>condition</cite>.</p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Constants that describe the <cite>operator</cite> to use within a <cite>condition</cite>.</p>
 <blockquote>
 <div><p>The following statement:</p>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">conditions</span><span class="o">=</span><span class="p">{</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">conditions</span><span class="o">=</span><span class="p">{</span>
     <span class="s2">&quot;or&quot;</span><span class="p">:</span> <span class="p">[{</span>
         <span class="s2">&quot;and&quot;</span><span class="p">:</span> <span class="p">[{</span>
             <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;HostInfo&quot;</span><span class="p">,</span>
@@ -146,9 +135,9 @@
 </pre></div>
 </div>
 </div></blockquote>
-<p>Can be rewritten to use <a class="reference internal" href="#dxlmarclient.constants.OperatorConstants" title="dxlmarclient.constants.OperatorConstants"><code class="xref py py-class docutils literal"><span class="pre">OperatorConstants</span></code></a> as follows:</p>
+<p>Can be rewritten to use <a class="reference internal" href="#dxlmarclient.constants.OperatorConstants" title="dxlmarclient.constants.OperatorConstants"><code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorConstants</span></code></a> as follows:</p>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span> <span class="n">conditions</span><span class="o">=</span><span class="p">{</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="n">conditions</span><span class="o">=</span><span class="p">{</span>
      <span class="s2">&quot;or&quot;</span><span class="p">:</span> <span class="p">[{</span>
          <span class="s2">&quot;and&quot;</span><span class="p">:</span> <span class="p">[{</span>
              <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;HostInfo&quot;</span><span class="p">,</span>
@@ -217,20 +206,21 @@
 <dl class="class">
 <dt id="dxlmarclient.constants.ProjectionConstants">
 <em class="property">class </em><code class="descclassname">dxlmarclient.constants.</code><code class="descname">ProjectionConstants</code><a class="headerlink" href="#dxlmarclient.constants.ProjectionConstants" title="Permalink to this definition">¶</a></dt>
-<dd><p>Constants that are used to describe a <cite>projection</cite>.</p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Constants that are used to describe a <cite>projection</cite>.</p>
 <blockquote>
 <div><p>The following statement:</p>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">projections</span><span class="o">=</span><span class="p">[{</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">projections</span><span class="o">=</span><span class="p">[{</span>
     <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;HostInfo&quot;</span><span class="p">,</span>
     <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;ip_address&quot;</span><span class="p">]</span>
 <span class="p">}]</span>
 </pre></div>
 </div>
 </div></blockquote>
-<p>Can be rewritten to use <a class="reference internal" href="#dxlmarclient.constants.ProjectionConstants" title="dxlmarclient.constants.ProjectionConstants"><code class="xref py py-class docutils literal"><span class="pre">ProjectionConstants</span></code></a> as follows:</p>
+<p>Can be rewritten to use <a class="reference internal" href="#dxlmarclient.constants.ProjectionConstants" title="dxlmarclient.constants.ProjectionConstants"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProjectionConstants</span></code></a> as follows:</p>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">projections</span><span class="o">=</span><span class="p">[{</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">projections</span><span class="o">=</span><span class="p">[{</span>
     <span class="n">ProjectionConstants</span><span class="o">.</span><span class="n">NAME</span><span class="p">:</span> <span class="s2">&quot;HostInfo&quot;</span><span class="p">,</span>
     <span class="n">ProjectionConstants</span><span class="o">.</span><span class="n">OUTPUTS</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;ip_address&quot;</span><span class="p">]</span>
 <span class="p">}]</span>
@@ -253,20 +243,22 @@
 <dl class="class">
 <dt id="dxlmarclient.constants.ResultConstants">
 <em class="property">class </em><code class="descclassname">dxlmarclient.constants.</code><code class="descname">ResultConstants</code><a class="headerlink" href="#dxlmarclient.constants.ResultConstants" title="Permalink to this definition">¶</a></dt>
-<dd><p>Constants that are used access the information contained in the results of a search.</p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Constants that are used access the information contained in the results of a
+search.</p>
 <blockquote>
 <div><p>The following statement:</p>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">search_result</span> <span class="o">=</span> <span class="n">result_context</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">search_result</span> <span class="o">=</span> <span class="n">result_context</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="k">print</span> <span class="s2">&quot;Total items: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">search_result</span><span class="p">[</span><span class="s2">&quot;totalItems&quot;</span><span class="p">])</span>
 <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">search_result</span><span class="p">[</span><span class="s2">&quot;items&quot;</span><span class="p">]:</span>
     <span class="k">print</span> <span class="s2">&quot;    &quot;</span> <span class="o">+</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;output&quot;</span><span class="p">][</span><span class="s1">&#39;HostInfo|ip_address&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div></blockquote>
-<p>Can be rewritten to use <a class="reference internal" href="#dxlmarclient.constants.ResultConstants" title="dxlmarclient.constants.ResultConstants"><code class="xref py py-class docutils literal"><span class="pre">ResultConstants</span></code></a> as follows:</p>
+<p>Can be rewritten to use <a class="reference internal" href="#dxlmarclient.constants.ResultConstants" title="dxlmarclient.constants.ResultConstants"><code class="xref py py-class docutils literal notranslate"><span class="pre">ResultConstants</span></code></a> as follows:</p>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">search_result</span> <span class="o">=</span> <span class="n">result_context</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">search_result</span> <span class="o">=</span> <span class="n">result_context</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="k">print</span> <span class="s2">&quot;Total items: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">search_result</span><span class="p">[</span><span class="n">ResultConstants</span><span class="o">.</span><span class="n">TOTAL_ITEMS</span><span class="p">])</span>
 <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">search_result</span><span class="p">[</span><span class="n">ResultConstants</span><span class="o">.</span><span class="n">ITEMS</span><span class="p">]:</span>
     <span class="k">print</span> <span class="s2">&quot;    &quot;</span> <span class="o">+</span> <span class="n">item</span><span class="p">[</span><span class="n">ResultConstants</span><span class="o">.</span><span class="n">ITEM_OUTPUT</span><span class="p">][</span><span class="s1">&#39;HostInfo|ip_address&#39;</span><span class="p">]</span>
@@ -324,17 +316,21 @@
 <dl class="class">
 <dt id="dxlmarclient.constants.SortConstants">
 <em class="property">class </em><code class="descclassname">dxlmarclient.constants.</code><code class="descname">SortConstants</code><a class="headerlink" href="#dxlmarclient.constants.SortConstants" title="Permalink to this definition">¶</a></dt>
-<dd><p>Constants that describe the direction the search results should be sorted (ascending vs. descending)</p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Constants that describe the direction the search results should be sorted
+(ascending vs. descending)</p>
 <blockquote>
 <div><p>The following statement:</p>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">results_context</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="n">sort_by</span><span class="o">=</span><span class="s2">&quot;Processes|name&quot;</span><span class="p">,</span> <span class="n">sort_direction</span><span class="o">=</span><span class="s2">&quot;asc&quot;</span><span class="p">)</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">results_context</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="n">sort_by</span><span class="o">=</span><span class="s2">&quot;Processes|name&quot;</span><span class="p">,</span>
+    <span class="n">sort_direction</span><span class="o">=</span><span class="s2">&quot;asc&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div></blockquote>
-<p>Can be rewritten to use <a class="reference internal" href="#dxlmarclient.constants.SortConstants" title="dxlmarclient.constants.SortConstants"><code class="xref py py-class docutils literal"><span class="pre">SortConstants</span></code></a> as follows:</p>
+<p>Can be rewritten to use <a class="reference internal" href="#dxlmarclient.constants.SortConstants" title="dxlmarclient.constants.SortConstants"><code class="xref py py-class docutils literal notranslate"><span class="pre">SortConstants</span></code></a> as follows:</p>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">results_context</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="n">sort_by</span><span class="o">=</span><span class="s2">&quot;Processes|name&quot;</span><span class="p">,</span> <span class="n">sort_direction</span><span class="o">=</span><span class="n">SortConstants</span><span class="o">.</span><span class="n">ASC</span><span class="p">)</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">results_context</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="n">sort_by</span><span class="o">=</span><span class="s2">&quot;Processes|name&quot;</span><span class="p">,</span>
+    <span class="n">sort_direction</span><span class="o">=</span><span class="n">SortConstants</span><span class="o">.</span><span class="n">ASC</span><span class="p">)</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -368,18 +364,20 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/dxlmarclient.constants.txt"
+      <li><a href="_sources/dxlmarclient.constants.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -401,13 +399,13 @@
         <li class="right" >
           <a href="dxlmarclient.client.html" title="dxlmarclient.client module"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">McAfee Active Response (MAR) DXL Client Library 0.1.2 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">McAfee Active Response (MAR) DXL Client Library 0.2.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="dxlmarclient.html" >dxlmarclient package</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2016, McAfee Inc.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+        &#169; Copyright 2018, McAfee LLC.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
     </div>
   </body>
 </html>
