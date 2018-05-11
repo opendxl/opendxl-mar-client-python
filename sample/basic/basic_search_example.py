@@ -1,6 +1,8 @@
 # This sample executes a McAfee Active Response search for the IP addresses
 # of hosts that have an Active Response client installed.
 
+from __future__ import absolute_import
+from __future__ import print_function
 import os
 import sys
 
@@ -40,6 +42,6 @@ with DxlClient(config) as client:
     # Loop and display the results
     if result_context.has_results:
         search_result = result_context.get_results(limit=10)
-        print "Results:"
+        print("Results:")
         for item in search_result["items"]:
-            print "    " + item["output"]['HostInfo|ip_address']
+            print("    " + item["output"]['HostInfo|ip_address'])
