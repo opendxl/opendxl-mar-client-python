@@ -6,7 +6,7 @@
 
 ## Overview
 
-The [McAfee Active Response](http://www.mcafee.com/us/products/endpoint-threat-defense-response.aspx) (MAR) DXL Python
+The [McAfee Active Response](https://www.mcafee.com/enterprise/en-us/products/active-response.html) (MAR) DXL Python
 client library provides a high level wrapper for the MAR [Data Exchange Layer](http://www.mcafee.com/us/solutions/data-exchange-layer.aspx)
 (DXL) API.
 
