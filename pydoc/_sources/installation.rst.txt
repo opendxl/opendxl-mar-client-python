@@ -11,7 +11,7 @@ Prerequisites
     `<https://opendxl.github.io/opendxl-client-python/pydoc/installation.html>`_
 
 * McAfee Active Response Server installed and available on DXL fabric
-    `<http://www.mcafee.com/us/products/endpoint-threat-defense-response.aspx>`_
+    `<https://www.mcafee.com/enterprise/en-us/products/active-response.html>`_
 
 * OpenDXL Python Client has permission to perform MAR searches
     `<https://opendxl.github.io/opendxl-client-python/pydoc/marsendauth.html>`_
