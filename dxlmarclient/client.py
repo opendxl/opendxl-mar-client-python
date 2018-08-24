@@ -471,7 +471,7 @@ class ResultsContext(object):
                 "body": {}
             })
 
-        if "body" in search_result:
-            return search_result["body"]
-        else:
+        if "body" not in search_result:
             raise Exception("Unable to find 'body' in search result.")
+
+        return search_result["body"]
