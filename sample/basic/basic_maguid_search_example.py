@@ -47,7 +47,7 @@ with DxlClient(config) as client:
            },
            context={
                "maGuids": [
-                  "{A53CB87C-37F4-11E8-3671-00505697327C}".lower()
+                  "{A53CB87C-37F4-11E8-3671-00000007327C}".lower()
                ]
            }
         )
