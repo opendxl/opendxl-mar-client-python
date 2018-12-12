@@ -505,7 +505,7 @@ class ResultsContext(object):
                     "sortDirection": sort_direction
                 },
                 "body": {}
-             })
+            })
 
         if "body" not in search_result:
             raise Exception("Unable to find 'body' in search result.")
