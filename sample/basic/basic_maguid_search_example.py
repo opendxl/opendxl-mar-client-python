@@ -28,29 +28,29 @@ with DxlClient(config) as client:
     marclient = MarClient(client)
 
     results_context = marclient.search(
-           projections=[{
-                 "name": "HostInfo",
-                 "outputs": ["hostname","ip_address"]
-           }, {
-                 "name": "Files",
-                 "outputs": ["md5","status"]
-           }],
-           conditions={
-               "or": [{
-                  "and": [{
-                  "name": "Files",
-                  "output": "md5",
-                  "op": "EQUALS",
-                  "value": "daac6ba6967893ddea06ed132b781529"
-                  }]
-               }]
-           },
-           context={
-               "maGuids": [
-                  "{A53CB87C-37F4-11E8-3671-00000007327C}".lower()
-               ]
-           }
-        )
+        projections=[{
+            "name": "HostInfo",
+            "outputs": ["hostname", "ip_address"]
+        }, {
+            "name": "Files",
+            "outputs": ["md5", "status"]
+        }],
+        conditions={
+            "or": [{
+                "and": [{
+                "name": "Files",
+                "output": "md5",
+                "op": "EQUALS",
+                "value": "daac6ba6967893ddea06ed132b781529"
+                }]
+            }]
+        },
+        context={
+            "maGuids": [
+                "{A53CB87C-37F4-11E8-3671-00000007327C}".lower()
+            ]
+        }
+    )
 
     # Loop and display the results
     if result_context.has_results:
