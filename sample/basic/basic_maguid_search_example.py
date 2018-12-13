@@ -38,10 +38,10 @@ with DxlClient(config) as client:
         conditions={
             "or": [{
                 "and": [{
-                "name": "Files",
-                "output": "md5",
-                "op": "EQUALS",
-                "value": "daac6ba6967893ddea06ed132b781529"
+                    "name": "Files",
+                    "output": "md5",
+                    "op": "EQUALS",
+                    "value": "daac6ba6967893ddea06ed132b781529"
                 }]
             }]
         },
