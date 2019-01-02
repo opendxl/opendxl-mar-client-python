@@ -237,40 +237,46 @@ class MarClient(Client):
                             )
 
         **Context**
+
             `Context` is used to restrict the search query. For example,
-            a search that only query's specific Agent UUID/s.
+            a search that only contains results for specific Agent UUID/s.
 
-            context is expecting the maGuids in lower cases
+            .. note::
 
-            ***Example Usage***
+                `Context` requires Agent UUID/s (MA GUIDs) to be lower case
 
-                results_context = marclient.search(
-                       projections=[{
-                             "name": "HostInfo",
-                             "outputs": ["hostname","ip_address"]
-                       }, {
-                             "name": "Files",
-                             "outputs": ["md5","status"]
-                       }],
-                       conditions={
-                           "or": [{
-                              "and": [{
-                              "name": "Files",
-                              "output": "md5",
-                              "op": "EQUALS",
-                              "value": "daac6ba6967893ddea06ed132b781529"
-                              }]
-                           }]
-                       },
-                       context={
-                           "maGuids": [
-                              "{A53CB87C-37F4-11E8-3671-00000007327C}".lower()
-                              ]
-                       }
-                    )
+            **Example Usage**
+
+                .. code-block:: python
+
+                    results_context = marclient.search(
+                            projections=[{
+                                "name": "HostInfo",
+                                "outputs": ["hostname","ip_address"]
+                            }, {
+                                "name": "Files",
+                                "outputs": ["md5","status"]
+                            }],
+                            conditions={
+                                "or": [{
+                                    "and": [{
+                                    "name": "Files",
+                                    "output": "md5",
+                                    "op": "EQUALS",
+                                    "value": "daac6ba6967893ddea06ed132b781529"
+                                    }]
+                                }]
+                            },
+                            context={
+                                "maGuids": [
+                                    "{A53CB87C-37F4-11E8-3671-00000007327C}".lower()
+                                ]
+                            }
+                        )
 
         :param projections: A ``list`` containing the `projections` for the search
         :param conditions: (optional) A ``dictionary`` containing the `conditions` for the search
+        :param context: (optional) A ``dictionary`` containing the `context` for the search
         :return: A :class:`ResultsContext` object which is used to access the search results.
         """
         request_dict = {
