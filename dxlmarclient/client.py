@@ -245,6 +245,10 @@ class MarClient(Client):
 
                 `Context` requires Agent UUID/s (MA GUIDs) to be lower case
 
+            .. note::
+
+                `Context` requires McAfee Active Response 2.3 or greater
+
             **Example Usage**
 
                 .. code-block:: python
