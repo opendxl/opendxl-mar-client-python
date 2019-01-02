@@ -58,7 +58,7 @@ class MarClient(Client):
                     self.__MIN_POLL_INTERVAL))
         self.__poll_interval = poll_interval
 
-    def search(self, projections, conditions=None):
+    def search(self, projections, conditions=None, context=None):
         """
         Executes a search via McAfee Active Response.
 
@@ -236,6 +236,39 @@ class MarClient(Client):
                                 }
                             )
 
+        **Context**
+            `Context` is used to restrict the search query. For example,
+            a search that only query's specific Agent UUID/s.
+
+            context is expecting the maGuids in lower cases
+
+            ***Example Usage***
+
+                results_context = marclient.search(
+                       projections=[{
+                             "name": "HostInfo",
+                             "outputs": ["hostname","ip_address"]
+                       }, {
+                             "name": "Files",
+                             "outputs": ["md5","status"]
+                       }],
+                       conditions={
+                           "or": [{
+                              "and": [{
+                              "name": "Files",
+                              "output": "md5",
+                              "op": "EQUALS",
+                              "value": "daac6ba6967893ddea06ed132b781529"
+                              }]
+                           }]
+                       },
+                       context={
+                           "maGuids": [
+                              "{A53CB87C-37F4-11E8-3671-00000007327C}".lower()
+                              ]
+                       }
+                    )
+
         :param projections: A ``list`` containing the `projections` for the search
         :param conditions: (optional) A ``dictionary`` containing the `conditions` for the search
         :return: A :class:`ResultsContext` object which is used to access the search results.
@@ -251,6 +284,9 @@ class MarClient(Client):
 
         if conditions:
             request_dict["body"]["condition"] = conditions
+
+        if context:
+            request_dict["body"]["context"] = context
 
         # Create the search
         response_dict = self._invoke_mar_search_api(request_dict)
