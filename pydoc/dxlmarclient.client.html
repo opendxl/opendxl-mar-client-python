@@ -6,13 +6,15 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>dxlmarclient.client module &#8212; McAfee Active Response (MAR) DXL Client Library 0.2.0 documentation</title>
+    <title>dxlmarclient.client module &#8212; McAfee Active Response (MAR) DXL Client Library 0.2.1 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="dxlmarclient.constants module" href="dxlmarclient.constants.html" />
@@ -33,7 +35,7 @@
         <li class="right" >
           <a href="dxlmarclient.html" title="dxlmarclient package"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">McAfee Active Response (MAR) DXL Client Library 0.2.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">McAfee Active Response (MAR) DXL Client Library 0.2.1 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="dxlmarclient.html" accesskey="U">dxlmarclient package</a> &#187;</li> 
       </ul>
     </div>  
@@ -71,7 +73,7 @@ topics and message formats.</p>
 
 <dl class="method">
 <dt id="dxlmarclient.client.MarClient.search">
-<code class="descname">search</code><span class="sig-paren">(</span><em>projections</em>, <em>conditions=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dxlmarclient.client.MarClient.search" title="Permalink to this definition">¶</a></dt>
+<code class="descname">search</code><span class="sig-paren">(</span><em>projections</em>, <em>conditions=None</em>, <em>context=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dxlmarclient.client.MarClient.search" title="Permalink to this definition">¶</a></dt>
 <dd><p>Executes a search via McAfee Active Response.</p>
 <p>Once the search has completed a <a class="reference internal" href="#dxlmarclient.client.ResultsContext" title="dxlmarclient.client.ResultsContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ResultsContext</span></code></a> object is
 returned which is used to access the search results.</p>
@@ -319,6 +321,48 @@ within the following textual search:</p>
 </div>
 </div></blockquote>
 </div></blockquote>
+<p><strong>Context</strong></p>
+<blockquote>
+<div><p><cite>Context</cite> is used to restrict the search query. For example,
+a search that only contains results for specific Agent UUID/s.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><cite>Context</cite> requires Agent UUID/s (MA GUIDs) to be lower case</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><cite>Context</cite> requires McAfee Active Response 2.3 or greater</p>
+</div>
+<p><strong>Example Usage</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">results_context</span> <span class="o">=</span> <span class="n">marclient</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
+        <span class="n">projections</span><span class="o">=</span><span class="p">[{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;HostInfo&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;hostname&quot;</span><span class="p">,</span><span class="s2">&quot;ip_address&quot;</span><span class="p">]</span>
+        <span class="p">},</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Files&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;md5&quot;</span><span class="p">,</span><span class="s2">&quot;status&quot;</span><span class="p">]</span>
+        <span class="p">}],</span>
+        <span class="n">conditions</span><span class="o">=</span><span class="p">{</span>
+            <span class="s2">&quot;or&quot;</span><span class="p">:</span> <span class="p">[{</span>
+                <span class="s2">&quot;and&quot;</span><span class="p">:</span> <span class="p">[{</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Files&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;output&quot;</span><span class="p">:</span> <span class="s2">&quot;md5&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;op&quot;</span><span class="p">:</span> <span class="s2">&quot;EQUALS&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;daac6ba6967893ddea06ed132b781529&quot;</span>
+                <span class="p">}]</span>
+            <span class="p">}]</span>
+        <span class="p">},</span>
+        <span class="n">context</span><span class="o">=</span><span class="p">{</span>
+            <span class="s2">&quot;maGuids&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;{A53CB87C-37F4-11E8-3671-00000007327C}&quot;</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -326,6 +370,7 @@ within the following textual search:</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>projections</strong> -- A <code class="docutils literal notranslate"><span class="pre">list</span></code> containing the <cite>projections</cite> for the search</li>
 <li><strong>conditions</strong> -- (optional) A <code class="docutils literal notranslate"><span class="pre">dictionary</span></code> containing the <cite>conditions</cite> for the search</li>
+<li><strong>context</strong> -- (optional) A <code class="docutils literal notranslate"><span class="pre">dictionary</span></code> containing the <cite>context</cite> for the search</li>
 </ul>
 </td>
 </tr>
@@ -512,13 +557,13 @@ descending <code class="docutils literal notranslate"><span class="pre">desc</sp
         <li class="right" >
           <a href="dxlmarclient.html" title="dxlmarclient package"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">McAfee Active Response (MAR) DXL Client Library 0.2.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">McAfee Active Response (MAR) DXL Client Library 0.2.1 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="dxlmarclient.html" >dxlmarclient package</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, McAfee LLC.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.
     </div>
   </body>
 </html>
